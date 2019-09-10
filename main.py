@@ -1,8 +1,9 @@
 import config
 import logging.config
 from flask import Flask
-from flask_restful import Api
-from flask_restful_swagger import swagger
+from flask_restful import Api, Resource
+
+# from flask_restful_swagger import swagger
 from flask_swagger_ui import get_swaggerui_blueprint
 from flask_cors import CORS
 
@@ -30,8 +31,10 @@ def configure_swagger(flask_app):
 def initialize_app(flask_app):
     configure_app(flask_app)
     configure_swagger(flask_app)
-
-    # api =  API.add_namespace(
+    flask_app.config["description"] = "Beta JIRA REST"
+    flask_app.config["apiVersion"] = application.config.get("apiVersion")
+    flask_app.config["api_spec_url"] = application.config.get("API_DOC")
+    # api = flask_app.add_namespae(
     #     Api(application),
     #     description="MetaboLights RESTful WebService",
     #     apiVersion=application.config.get("API_VERSION"),
@@ -77,3 +80,43 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# from flask_restful import Resource, reqparse
+# import json
+# import requests
+# from lib.log import setup_logger
+
+
+# class SlackBotAPI(Resource):
+#     base_uri = "https://hooks.slack.com/services/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"
+
+#     headers = {'Content-Type': 'application/json'}
+
+#     parser = reqparse.RequestParser()
+#     parser.add_argument('text',
+#                         type=str,
+#                         required=True,
+#                         help="Message field cannot be left blank!"
+#                         )
+#     logger = setup_logger(__name__)
+
+#     # health check
+
+#     def get(self):
+#         return "testing OK", 200
+
+#     def post(self):
+
+#         data = SlackBotAPI.parser.parse_args()
+
+#         slack_message = {'text': data['text']}
+
+#         try:
+#             response = requests.post(
+#                 self.base_uri, headers=self.headers, data=json.dumps(slack_message))
+#         except Exception as e:
+#             self.logger.info(str(e))
+#             return {"error": "Internal server error: {}".format(str(e))}, 500
+
+#         return {"receivedResponseFromSlackWebhook": response.text, "jsonDataThatHasBeenSentThroughToSlack": json.dumps(slack_message)}, response.status_code
