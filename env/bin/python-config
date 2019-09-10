@@ -1,4 +1,4 @@
-#!/Users/ryanpark/Desktop/Codes/API/SDLC/env/bin/python
+#!/Users/ryanpark/Desktop/Codes/API/flask-api-template/env/bin/python
 
 import sys
 import getopt

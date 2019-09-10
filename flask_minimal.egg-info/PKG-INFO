@@ -1,0 +1,14 @@
+Metadata-Version: 1.1
+Name: flask-minimal
+Version: 1.0.0
+Summary: Template to build Flask-based APIs
+Home-page: UNKNOWN
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
