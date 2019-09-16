@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/ryanpark/Desktop/Codes/API/SDLC/env"
+VIRTUAL_ENV="/Users/ryanpark/Desktop/Codes/API/flask-api-template/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
