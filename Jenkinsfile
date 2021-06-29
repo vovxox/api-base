@@ -1,23 +1,10 @@
 pipeline {
-    agent none
-
+    agent { docker { image 'python:3.5.1' } }
     stages {
-        stage('Sonarqube analysis') {
-           agent {     docker   'maven:3-alpine'   }
-
+        stage('build') {
             steps {
-
-                script {
-                    scannerHome = tool 'SonarQube Scanner';
-
-                }
-                withSonarQubeEnv('sonar') {
-                        sh "${scannerHome}/bin/sonar-scanner" 
-                }
-
+                sh 'python --version'
             }
         }
-
-
     }
 }
